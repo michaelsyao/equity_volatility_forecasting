@@ -96,7 +96,7 @@ Next iteration of such networks include more layers to better represent non-line
 RNNs chain previous states of the network together in a series. By considering information from the previous states of the network and finding correlations between events, RNNs can establish long-term dependencies. 
 
 Source: https://deeplearning4j.org/lstm
-![RNNs](./assets/RNN.gif)<br>
+![RNNs](./assets/rnn.gif)<br>
 
 This type of network is fit much better for sequencing problems but RNNs also suffer from a known problem called exploding and vanishing gradients. During training while weight gradients are calculated for the previous and current states of the network, gradients can either get too large (exploding) or get too small (vanishing) which hinders the networks ability to learn. https://colah.github.io/posts/2015-08-Understanding-LSTMs/
 
