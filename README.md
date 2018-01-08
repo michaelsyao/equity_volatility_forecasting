@@ -11,7 +11,7 @@ Predicting future events using time-series data with deep learning models is not
 ### **Problem Statement**
 Goal of this project is predicting a 1-week future return volatility for US equities. [Volatility](https://www.investopedia.com/terms/v/volatility.asp) in financial markets is an important concept for investors, as it describes **risk** in terms of standard deviations from an expected return which defines a range where an investment can go. In other words, larger the standard deviations of returns for an asset, larger the risk an investor would be undertaking by investing in such asset. This is also the reason why investors prefer assets with lower risk (lower standard deviation) for a given level of return suggested by a set of opportunities.
 
-Long-Short Term Memory Networks, a special type of Recurrent Neural Networks which itself is a kind of Multi-layer Perceptron (discussed under [Algorithms and Techniques](#algos)), have recently been successful in sequence-to-sequence tasks such as language [translation, voice recognition and image captioning](https://distill.pub/2016/augmented-rnns/). Modeling the volatility in the financial markets as sequences of events, LSTMs look to be a natural fit for this task.
+Long-Short Term Memory Networks, a special type of Recurrent Neural Networks which are kinds of Multi-Layer Perceptrons (discussed under [Algorithms and Techniques](#algos)), have recently been successful in sequence-to-sequence tasks such as language [translation, voice recognition and image captioning](https://distill.pub/2016/augmented-rnns/). Modeling the volatility in the financial markets as sequences of events, LSTMs look to be a natural fit for this task.
 
 By using trading volume, daily returns calculated in day-over-day percentage differences and calculated ex-post volatility ([realized](https://www.nuffield.ox.ac.uk/economics/papers/2008/w13/wiley.pdf)) I will be building Long-Short Term Memory Networks (LSTM) to predict the future volatility (ex-ante) of single-name US equities
 
@@ -78,7 +78,7 @@ Let's take a look a the data post-normalization
 
 ![.norm_feature_distributions.png](./assets/norm_feature_distributions.png)
 
-Now that we have transformed our data so that each future will be able to contribute to the model, we're ready to proceed to deciding on benchmark models and designing LSTM architectures.
+Now that we have transformed our data so that each feature will be able to contribute to the model, we're ready to proceed to deciding on benchmark models and designing LSTM architectures.
 
 
 ### <a name="algos"></a>Algorithms and Techniques
