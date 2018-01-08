@@ -87,7 +87,7 @@ This part will consider theoretical basis of Single and Multilayer Perceptrons (
 
 Single Neural Perceptrons are built on linear combination units where results are passed through a hard limiter that is differentiable[\[1\]](https://www.math.kth.se/matstat/seminarier/reports/M-exjobb15/150612a.pdf). Let's say the limiter returns 1 for all positive numbers and 0 for everything else, we can make forward passes from the network and compare these results with observed values for all the features we have combined using the perceptron. Using this *error*, we can calculate gradients for weights and find the weights that would get us to a smallest error value. This process is called backward propagation and uses Stochastic Gradient Descent to find optimal weights and *learn* decision boundries for these two classes `[1, 0]`
 
-<center>![''](./assets/single_layer_perceptron.png)</center><br>
+<center>![aa](./assets/single_layer_perceptron.png)</center><br>
 
 Next iteration of such networks include more layers to better represent non-linear relationships in the data. While these networks use the same forward and backward propagation and are widely used in complex image recognition tasks, are unable to explain historical relationships in the data as they do not have a *memory*. In other words, they consider everything all at once.
 
@@ -291,7 +291,7 @@ Model with trained on less data certainly performed more poorly compared to the 
 
 ### Justification
 
-After trying various architectures and looking at the benchmark linear model results, we can conclude the best LSTM we could create out of the conducted experiments is ~1.5x better than the linear model. Compared to the linear model which suprisingly scored as low as it did, LSTM definitely captures the general trend of the volatility changes much better. While 
+After trying various architectures and looking at the benchmark linear model results, we can conclude the best LSTM we could create out of the conducted experiments is ~1.5x better than the linear model. Compared to the linear model which suprisingly scored as low as it did, LSTM definitely captures the general trend of the volatility changes much better. 
 
 
 ## V. Conclusion
