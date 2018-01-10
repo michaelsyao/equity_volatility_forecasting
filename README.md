@@ -98,7 +98,7 @@ RNNs chain previous states of the network together in a series. By considering i
 Source: https://deeplearning4j.org/lstm
 ![RNNs](./assets/rnn.gif)<br>
 
-This type of network is fit much better for sequencing problems but RNNs also suffer from a known problem called exploding and vanishing gradients. During training while weight gradients are calculated for the previous and current states of the network, gradients can either get too large (exploding) or get too small (vanishing) which hinders the networks ability to learn. https://colah.github.io/posts/2015-08-Understanding-LSTMs/
+This type of network is fit much better for sequencing problems but RNNs also suffer from a known problem called exploding and vanishing gradients. During training while weight gradients are calculated for the previous and current states of the network, gradients can either get too large (exploding) or get too small (vanishing) which hinders the network's ability to learn. https://colah.github.io/posts/2015-08-Understanding-LSTMs/
 
 Put more eloquently (https://deeplearning4j.org/lstm#vanishing)
 
@@ -106,7 +106,7 @@ Put more eloquently (https://deeplearning4j.org/lstm#vanishing)
 
 > Because the layers and time steps of deep neural networks relate to each other through multiplication, derivatives are susceptible to vanishing or exploding.
 
-To overcome the vanishing gradient problem, in mid-90s researchers Sepp Hochreiter and Juergen Schmidhuber have introduced Long-Short Term Memory Units which utilize gated cells instead of a straight flow of information to-and-from previous states of the network. Much like the whole network, these gated cells, based on the inputs they receive can learn allow or deny parts of the information to be pertained or to be forgotten before letting data pass through. This process of letting some information drop out of the network is useful for distingushing relationships between those that are useful to keep or those that are not according to what we're trying to achieve with the network. 
+To overcome the vanishing gradient problem, in mid-90s researchers Sepp Hochreiter and Juergen Schmidhuber have introduced Long-Short Term Memory Units which utilize gated cells instead of a straight flow of information to-and-from previous states of the network. Much like the whole network, these gated cells, based on the inputs they receive can learn to allow or deny parts of the information to be pertained or to be forgotten before letting data pass through. This process of letting some information drop out of the network is useful for distingushing relationships between those that are useful to keep or those that are not according to what we're trying to achieve with the network. 
 
 Resources:
 
@@ -149,7 +149,7 @@ Here is how it looks `MSE: 8.0768333011583258e-05`
 
 ### Implementation
 
-For implementation of LSTMs I will be using `Keras` which provides abstractions on `Tensor` constructs. 
+For implementation of LSTMs I will be using [Keras](https://keras.io/) which provides abstractions on [Tensor](https://www.tensorflow.org/) constructs. 
 
 While preparing data for LSTMS we should consider an embedding layer for our observations instead of feeding the entire series to the model. In other words, we should consider chunking our dataset into smaller pieces create a series of observations to predict a sequence.
 
@@ -157,7 +157,7 @@ An example might explain better. Consider we have the following series,
 
 ```
 series = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-targers = [111, 99, 88, 77, 66, 55, 44, 33, 22, 11]
+targets = [111, 99, 88, 77, 66, 55, 44, 33, 22, 11]
 ```
 
 Instead of feeding `series` altogether we should chunk it into a set of samples with a constant embedding size (not to be confused with `word2vec` like representations of words and phrases in vector form). Embedding here refers to a constant window which constitutes as a sample fed into the model. If we use embedding size 2, `series` would look like `[1, 2], [2, 3], [3, 4] ..` and our targets would be `[99, 88, 77 ..]`.
@@ -229,7 +229,7 @@ model.compile(optimizer=opt, loss='mse')
 ```
 
 
-As the optimization function I will be a version of the commonly used RMSprop for RNNS, [Nadam](https://keras.io/optimizers/) which iterates on dynamically adjusts learning based on momentum. Initial batch size, amount of data fed from the sample at 16.
+For the optimization function I will be using a version of the commonly used optimizer for RNNs, RMSprop. [Nadam](https://keras.io/optimizers/) iterates on RMSprop by dynamically adjusting learning based on momentum. Initial batch size, amount of data fed from the sample, is 16.
 
 
 ```python
