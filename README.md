@@ -87,11 +87,11 @@ This part will consider theoretical basis of Single and Multilayer Perceptrons (
 
 Single Neural Perceptrons are built on linear combination units where results are passed through a hard limiter that is differentiable[\[1\]](https://www.math.kth.se/matstat/seminarier/reports/M-exjobb15/150612a.pdf). Let's say the limiter returns 1 for all positive numbers and 0 for everything else, we can make forward passes from the network and compare these results with observed values for all the features we have combined using the perceptron. Using this *error*, we can calculate gradients for weights and find the weights that would get us to a smallest error value. This process is called backward propagation and uses Stochastic Gradient Descent to find optimal weights and *learn* decision boundries for these two classes `[1, 0]`
 
-<center>![aa](./assets/single_layer_perceptron.png)</center><br>
+![aa](./assets/single_layer_perceptron.png)<br>
 
 Next iteration of such networks include more layers to better represent non-linear relationships in the data. While these networks use the same forward and backward propagation and are widely used in complex image recognition tasks, are unable to explain historical relationships in the data as they do not have a *memory*. In other words, they consider everything all at once.
 
-<center>![./mlp_schema_1.jpg](./assets/mlp_schema_1.jpg)</center><br>
+![./mlp_schema_1.jpg](./assets/mlp_schema_1.jpg)<br>
 
 RNNs chain previous states of the network together in a series. By considering information from the previous states of the network and finding correlations between events, RNNs can establish long-term dependencies. 
 
@@ -121,7 +121,7 @@ Since our goal is to predict future volatility based on the historical relations
 Due to it's straight forward nature, one of the most common (and perhaps overused) modeling techniques in investing is linear regression, I will be following this lead and use the `LinearRegression` classifier from `sklearn` to create a benchmark model and evaluate it with `sklearn.metrics.mean_squared_error`
 
 ```python
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LinearRegression
 lin_reg = LinearRegression()
 
 
@@ -151,7 +151,7 @@ Here is how it looks `MSE: 8.0768333011583258e-05`
 
 For implementation of LSTMs I will be using [Keras](https://keras.io/) which provides abstractions on [Tensor](https://www.tensorflow.org/) constructs. 
 
-While preparing data for LSTMS we should consider an embedding layer for our observations instead of feeding the entire series to the model. In other words, we should consider chunking our dataset into smaller pieces create a series of observations to predict a sequence.
+While preparing data for LSTMs, we should consider an embedding layer for our observations instead of feeding the entire series to the model. In other words, we should consider chunking our dataset into smaller pieces create a series of observations to predict a sequence.
 
 An example might explain better. Consider we have the following series,
 
@@ -196,7 +196,7 @@ x_train, x_test = x[:int(len(x) * .9)], x[int(len(x) * .9):]
 y_train, y_test = y[:int(len(y) * .9)], y[int(len(y) * .9):]
 ```
 
-So, given our features are `['AdjOpen', 'AdjHigh', 'AdjLow', 'AdjClose', 'AdjVolume', 'ex_post_volatility']` and `EMBED_SIZE` is `30` our `input_shape` is (30, 6).
+So, given our features are `['AdjOpen', 'AdjHigh', 'AdjLow', 'AdjClose', 'AdjVolume', 'ex_post_volatility']` and `EMBED_SIZE` is `30` our `input_shape` is `(30, 6)`.
 
 For this initial model, I will be using a single layer LSTM with 2 Dense layers.
 
@@ -304,7 +304,7 @@ It has been very interesting to build the linear and the LSTM models for volatil
 As it is rather easy to overfit models in financial modeling, one way of improving model's robustness would be adding L1 and L2 regularizations to the LSTM layers to generalize better.
 
 
-References:
+**References:**
 
 - https://github.com/llSourcell/How-to-Predict-Stock-Prices-Easily-Demo/blob/master/stockdemo.ipynb
 - https://github.com/etai83/stock-future-value-ANN-LSTM/blob/master/Google%20Stock%20prediction%20-%20future%20values.ipynb
